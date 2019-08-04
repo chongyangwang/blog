@@ -1,0 +1,16 @@
+.bt_footer{
+    width:100%;
+    height: 60px;
+    border-top:1px solid #ccc;
+    margin-top: 10px;
+}
+.bt_footer_content,.bt_footer_content>p{
+    width:100%;
+    height: 60px;
+}
+.bt_footer_content>p{
+   text-align: center;
+   line-height: 60px;
+   font-size: 13px;
+   color:#000;
+}

@@ -1,0 +1,20 @@
+<div class="container bt_page bt_page_wapper">
+    <div class="bt_page_article article_list">
+        <div class="card article_list_item col-sm-12 col-md-12" *ngFor="let article of articleList">
+            <div class="card-body">
+                <h5 class="card-title">{{article.title}}</h5>
+                <p class="card-text">技术分类:&nbsp;&nbsp;<strong>{{article.category_name}}</strong></p>
+                <p class="card-text">发布时间:&nbsp;&nbsp;<strong>{{article.release_time | date:"yyyy-MM-dd"}}</strong></p>
+                <p style="color:#6BB4F3; font-weight: bold;cursor: pointer;" (click)="handelGoDetail(article.id)">
+                    <span>阅读全文</span><i nz-icon nzType="double-right" nzTheme="outline"></i></p>
+            </div>
+        </div>
+    </div>
+    <div class="bt_page_wapper_footer col-sm-12 col-md-12">
+        <nz-pagination [nzFrontPagination]="false" [nzShowQuickJumper]="false" [nzShowSizeChanger]="true"
+            [nzPageSizeOptions]="paginationSizeOptions" [(nzPageIndex)]="currentPage" [(nzPageSize)]="pageSize"
+            [(nzTotal)]="total" (nzPageIndexChange)="changePageIndex($event)"
+            (nzPageSizeChange)="changePageSize($event)">
+        </nz-pagination>
+    </div>
+</div>

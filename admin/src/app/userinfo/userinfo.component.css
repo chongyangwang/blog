@@ -1,0 +1,12 @@
+.userinfo{
+  margin-right: 30px;
+}
+.login_name{
+   margin-left: 15px;
+   font-size: 12px;
+}
+.outline{
+    color:red;
+    margin-left: 30px;
+    cursor: pointer;
+}

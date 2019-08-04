@@ -1,0 +1,9 @@
+<div class="container bt_page bt_page_wapper">
+  <div class="container_detail_article" *ngIf="article">
+    <div class="detail_head">
+      <p class="detail_head_item detail_head_cat"><i nz-icon nzType="tags" nzTheme="outline"></i>&nbsp;&nbsp;{{article.category_name}}</p>
+      <p class="detail_head_item detail_head_time"><i nz-icon nzType="contacts" nzTheme="outline"></i>&nbsp;&nbsp;{{article.release_time | date:'yyyy-MM-dd'}}</p>
+    </div>
+    <div [froalaView]="article.content"></div>
+  </div>
+</div>

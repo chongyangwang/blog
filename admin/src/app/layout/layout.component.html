@@ -1,0 +1,82 @@
+<div class="layout">
+   <nz-layout class="admin_wrap_layout">
+      <nz-sider style="overflow: auto; height: 100vh;" nzCollapsible [(nzCollapsed)]="isCollapsed"
+         [nzTrigger]="triggerTemplate">
+         <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+            <li nz-menu-item>
+               <span><i nz-icon type="home"></i></span>
+               <span *ngIf="!isCollapsed"><a routerLink="/layout/home" class="home_link">主页</a></span>
+            </li>
+            <li nz-submenu>
+               <span title><i nz-icon type="user"></i><span class="nav-text">用户管理</span></span>
+               <ul>
+                  <li nz-menu-item>
+                     <a routerLink="/layout/user">用户列表</a>
+                  </li>
+                  <li nz-menu-item>
+                     <a routerLink="/layout/modifypwd">密码修改</a>
+                  </li>
+               </ul>
+            </li>
+            <li nz-submenu>
+               <span title><i nz-icon type="file" theme="outline"></i><span class="nav-text">文章管理</span></span>
+               <ul>
+                  <li nz-menu-item>
+                     <a routerLink="/layout/article">文章列表</a>
+                  </li>
+                  <li nz-menu-item>
+                     <a routerLink="/layout/article-insert">添加文章</a>
+                  </li>
+                  <li nz-menu-item>
+                     <a routerLink="/layout/article-update">编辑文章</a>
+                  </li>
+               </ul>
+            </li>
+            <li nz-submenu>
+               <span title><i nz-icon type="schedule" theme="outline"></i><span class="nav-text">归档日志</span></span>
+               <ul>
+                  <li nz-menu-item>
+                     <a routerLink="/layout/archive">归档列表</a>
+                  </li>
+               </ul>
+            </li>
+            <li nz-submenu>
+               <span title><i nz-icon type="appstore" theme="outline"></i><span class="nav-text">收藏管理</span></span>
+               <ul>
+                  <li nz-menu-item>
+                     <a routerLink="/layout/collection">收藏列表</a>
+                  </li>
+                  <li nz-menu-item>
+                     <a routerLink="/layout/collection-insert">添加收藏</a>
+                  </li>
+               </ul>
+            </li>
+            <li nz-submenu>
+               <span title><i nz-icon type="share-alt" theme="outline"></i><span class="nav-text">说说管理</span></span>
+               <ul>
+                  <li nz-menu-item>
+                     <a routerLink="/layout/say">说说列表</a>
+                  </li>
+                  <li nz-menu-item>
+                     <a routerLink="/layout/say-insert">添加说说</a>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+      </nz-sider>
+      <nz-layout>
+         <nz-header style="background: #fff; padding:0;" class="nav_bar">
+            <i class="trigger" nz-icon [type]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+               (click)="isCollapsed = !isCollapsed">
+            </i>
+            <app-userinfo style="position:fixed; right:0; top:0;"></app-userinfo>
+         </nz-header>
+         <nz-content style="margin:10px 8px;height:calc(100% - 64px);overflow-y: scroll;">
+            <div class="admin_wrap_layout_page">
+               <router-outlet></router-outlet>
+               <app-footer></app-footer>
+            </div>
+         </nz-content>
+      </nz-layout>
+   </nz-layout>
+</div>

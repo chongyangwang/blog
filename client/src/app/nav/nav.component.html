@@ -1,0 +1,30 @@
+<div class="bt_nav">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #03060B;">
+      <a class="nav-link" [routerLink]="['/home']" routerLinkActive="cuurent_link">主页</a>
+      <button class="navbar-toggler bt_toggle_button" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <img src="../../../assets/img/toggle.jpg" alt="" class="bt_toggle_img">
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <!-- <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/home']"  routerLinkActive="cuurent_link">主页</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/article" [queryParams]="{'name':'文章'}"  routerLinkActive="cuurent_link">文章</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/archive" [queryParams]="{'name':'归档'}" routerLinkActive="cuurent_link">归档</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/collection" [queryParams]="{'name':'收藏'}" routerLinkActive="cuurent_link">收藏</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/say" [queryParams]="{'name':'说说'}" routerLinkActive="cuurent_link">说说</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>

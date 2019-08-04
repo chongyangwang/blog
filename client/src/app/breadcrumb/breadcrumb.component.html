@@ -1,0 +1,13 @@
+<div class="bt_breadcrumb">
+  <div class="container bt_border_global">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <span class="current_position">当前位置:</span>
+        &nbsp; &nbsp;
+        <li *ngFor="let route of currentRouteList; let i = index" class="breadcrumb-item">
+          <a class="breadcrumb-item">{{route.name}}</a>
+        </li>
+      </ol>
+    </nav>
+  </div>
+</div>

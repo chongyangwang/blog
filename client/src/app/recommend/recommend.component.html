@@ -1,0 +1,10 @@
+<div class="card text-center recommend-card bt_border_global">
+    <div class="card-header">
+      <h4>好文推荐</h4>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item link-item" *ngFor="let item of recommendList.data;let key=index;" (click)="handelJumpRecommend(item.url)">
+        {{item.title}}
+      </li>
+    </ul>
+  </div>

@@ -1,0 +1,46 @@
+<div class="bt_login">
+  <h4 class="page_tip">管理系统登录界面</h4>
+  <div class="bt_login_content">
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-control [nzValidateStatus]="validateForm.get('userName')?.valid === true? success : error" nzHasFeedback>
+            <nz-input-group [nzPrefix]="prefixUser">
+              <input type="text" nz-input formControlName="userName" placeholder="输入用户名">
+            </nz-input-group>
+            <nz-form-explain *ngIf="validateForm.get('userName')?.dirty && validateForm.get('userName')?.errors">
+                <ng-container *ngIf="validateForm.get('userName')?.hasError('required')">
+                    请输入您的用户名!
+                </ng-container>
+                <ng-container *ngIf="validateForm.get('userName')?.hasError('formatname')">
+                    用户名格式不正确,用户由字母组成且长度为5!
+                </ng-container>
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control [nzValidateStatus]="validateForm.get('password')?.valid === true? success : error" nzHasFeedback>
+            <nz-input-group [nzPrefix]="prefixLock">
+              <input type="password" nz-input formControlName="password" placeholder="输入密码">
+            </nz-input-group>
+            <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors">
+              <ng-container *ngIf="validateForm.get('password')?.hasError('required')">
+                请输入您的密码!
+              </ng-container>
+              <ng-container *ngIf="validateForm.get('password')?.hasError('formatpwd')">
+                密码格式不正确,密码由8位字母数字组合而成!
+              </ng-container>
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button class="login-form-button" [nzType]="'primary'">
+              登录
+            </button>
+          </nz-form-control>
+        </nz-form-item>
+    </form>
+  </div>
+  <ng-template #prefixUser><i nz-icon type="user"></i></ng-template>
+  <ng-template #prefixLock><i nz-icon type="lock"></i></ng-template>
+</div>

@@ -1,0 +1,43 @@
+<div class="admin_wrap_layout_page_content">
+  <app-breadcrumb></app-breadcrumb>
+  <div class="layout_page_content_form">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label>图片地址</nz-form-label>
+        <nz-form-control>
+          <nz-input-group>
+            <input formControlName="img_url" nz-input placeholder="请输入配图地址" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>录入时间</nz-form-label>
+        <nz-form-control>
+          <nz-input-group>
+            <nz-date-picker formControlName="release_time" style="top:2px;" nzShowTime nzFormat="yyyy-MM-dd HH:mm:ss"
+              nzPlaceHolder="请选择时间" (ngModelChange)="onChange($event)" (nzOnOk)="onOk($event)">
+            </nz-date-picker>
+            <!-- <nz-date-picker nzFormat="yyyy-MM-dd" ></nz-date-picker> -->
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('release_time')?.dirty && validateForm.get('release_time')?.errors">
+            录入时间不能为空！
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>说说内容</nz-form-label>
+        <nz-form-control>
+          <textarea formControlName="content" nz-input rows="3" placeholder="write you want"></textarea>
+          <nz-form-explain
+            *ngIf="validateForm.get('content')?.dirty && validateForm.get('content')?.hasError('required')">说说内容不能为空
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button nzType="primary">添加</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</div>

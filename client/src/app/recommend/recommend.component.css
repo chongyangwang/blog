@@ -1,0 +1,12 @@
+.recommend-card{
+    margin-top: 10px;
+}
+.link-item{
+    font-size:13px;
+    cursor: pointer;
+    color:#2895c1;
+}
+.link-item:hover{
+   background: #666;
+   color:#fff;
+}

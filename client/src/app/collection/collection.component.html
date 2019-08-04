@@ -1,0 +1,46 @@
+<div class="container bt_page bt_page_wapper">
+  <div class="bt_page_wapper_form">
+    <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label>文章类别</nz-form-label>
+        <nz-form-control>
+          <nz-input-group>
+            <nz-select nzShowSearch nzAllowClear formControlName="cat_id" nzPlaceHolder="请选择文章类别">
+              <nz-option nzValue="" nzLabel="全部"></nz-option>
+              <nz-option *ngFor="let item of categoryList" [nzValue]="item.id" [nzLabel]="item.category_name">
+              </nz-option>
+            </nz-select>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button nzType="primary">搜搜</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+  <ng-container *ngIf="collectionList?.length>0; else elseTemplate">
+    <div class="bt_page_wapper_content bt_page_collection collection_list">
+      <div class="card collection_list_item col-sm-12 col-md-12" *ngFor="let collection of collectionList">
+        <div class="card-body">
+          <h5 class="card-title">{{collection.title}}</h5>
+          <p class="card-text">所属分类:&nbsp;&nbsp;<strong>{{collection.category_name}}</strong></p>
+          <p class="card-text">整合时间:&nbsp;&nbsp;<strong>{{collection.entry_time | date:"yyyy-MM-dd"}}</strong></p>
+          <a [href]="collection.url">查看原文<i nz-icon nzType="double-right" nzTheme="outline"></i></a>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="bt_wapper_no_module">
+      空空如也 下次再来转转吧!
+    </div>
+  </ng-template>
+  <div class="bt_page_wapper_footer col-sm-12 col-md-12">
+    <nz-pagination [nzFrontPagination]="false" [nzShowQuickJumper]="false" [nzShowSizeChanger]="true"
+      [nzPageSizeOptions]="paginationSizeOptions" [(nzPageIndex)]="currentPage" [(nzPageSize)]="pageSize"
+      [(nzTotal)]="total" (nzPageIndexChange)="changePageIndex($event)" (nzPageSizeChange)="changePageSize($event)">
+    </nz-pagination>
+  </div>
+</div>

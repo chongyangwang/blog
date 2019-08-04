@@ -1,0 +1,19 @@
+.layout_page_content_form .ant-select-selection__rendered {
+  width: 160px;
+}
+.ant-layout-footer {
+  padding: 24px 50px;
+  color: rgba(0,0,0,.65);
+  font-size: 14px;
+  background: #fff!important;
+  border-top:1px solid #ccc;
+}
+.ant-menu-inline .ant-menu-item{
+  margin:  0!important;
+}
+.ant-layout.ant-layout-has-sider>.ant-layout, .ant-layout.ant-layout-has-sider>.ant-layout-content {
+  overflow: hidden!important;
+}
+/* .fr-visible{
+  left:-25px!important;
+} */

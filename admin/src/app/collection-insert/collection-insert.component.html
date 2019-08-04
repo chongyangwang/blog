@@ -1,0 +1,50 @@
+<div class="admin_wrap_layout_page_content">
+    <app-breadcrumb></app-breadcrumb>
+    <div class="layout_page_content_form">
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-label nzRequired>收藏文章标题</nz-form-label>
+          <nz-form-control>
+            <nz-input-group>
+              <input formControlName="title" nz-input placeholder="请输入收藏文章标题" />
+            </nz-input-group>
+            <nz-form-explain *ngIf="validateForm.get('title')?.dirty && validateForm.get('title')?.errors">收藏文章标题不能为空！</nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzRequired>文章地址</nz-form-label>
+          <nz-form-control>
+            <nz-input-group>
+              <input formControlName="url" nz-input placeholder="请输入收藏文章地址" />
+            </nz-input-group>
+            <nz-form-explain *ngIf="validateForm.get('url')?.dirty && validateForm.get('url')?.errors">收藏文章地址不能为空！</nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzRequired>录入时间</nz-form-label>
+          <nz-form-control>
+              <nz-input-group>
+                <nz-date-picker nzFormat="yyyy-MM-dd" formControlName="entry_time" style="top:2px;"></nz-date-picker>
+              </nz-input-group>
+              <nz-form-explain *ngIf="validateForm.get('entry_time')?.dirty && validateForm.get('entry_time')?.errors">录入时间不能为空！</nz-form-explain>
+            </nz-form-control>
+          </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzRequired>文章类别</nz-form-label>
+            <nz-form-control>
+              <nz-input-group>
+                  <nz-select  nzShowSearch nzAllowClear formControlName="cat_id"  nzPlaceHolder="请选择文章类别">
+                    <nz-option *ngFor="let item of categoryList" [nzValue]="item.id" [nzLabel]="item.category_name"></nz-option>
+                  </nz-select>
+              </nz-input-group>
+              <nz-form-explain *ngIf="validateForm.get('cat_id')?.dirty && validateForm.get('cat_id')?.errors">文章类别不能为空！</nz-form-explain>
+            </nz-form-control>
+          </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button nzType="primary">添加</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>

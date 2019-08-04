@@ -1,0 +1,30 @@
+<div class="container bt_page bt_page_wapper">
+   <div class="bt_page_piece bt_page_say bt_border_global">
+      <nz-timeline>
+         <nz-timeline-item *ngFor="let say of sayList;">
+            <div class="item_say">
+               <div class="say_img" [ngClass]="{'say_img': say.img_url!=='' ? true : false}">
+                 <img [src]="say?.img_url" alt="">
+               </div>
+               <div>
+                  <p>{{say.content}}</p>
+                  <p style="text-align: right;"><b>发布于</b>{{say.release_time | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+               </div>
+            </div>
+         </nz-timeline-item>
+      </nz-timeline>
+   </div>
+   <div class="bt_page_wapper_footer col-sm-12 col-md-12">
+      <nz-pagination
+         [nzFrontPagination]="false"
+         [nzShowQuickJumper]="false"
+         [nzShowSizeChanger]="true"
+         [nzPageSizeOptions]="paginationSizeOptions"
+         [(nzPageIndex)]="currentPage"
+         [(nzPageSize)]="pageSize"
+         [(nzTotal)]="total"
+         (nzPageIndexChange)="changePageIndex($event)"
+         (nzPageSizeChange)="changePageSize($event)">
+      </nz-pagination>
+   </div>
+</div>

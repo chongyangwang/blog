@@ -1,0 +1,8 @@
+.bt_swipper {
+  margin-bottom: 20px;
+}
+@media (max-width: 557px) {
+  .bt_card {
+    display: none;
+  }
+}

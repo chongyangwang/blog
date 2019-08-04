@@ -1,0 +1,32 @@
+<!--主要内容区域结构
+  head
+  nav  
+  主页（img吐槽一下）   文章（404）  归档（其实是文章的归档用做文章记录）  收藏（好的链接收藏）  生活（说说）
+  banner
+  causer  / img
+  breadcrumb
+  main
+  left   routeoutlate
+  right  selfdesc  友情链接
+-->
+<div class="bt_wrapper">
+  <app-head></app-head>
+  <app-nav></app-nav>
+  <app-breadcrumb></app-breadcrumb>
+  <app-banner *ngIf="showBanner"></app-banner>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-sm-0" style="padding-left: 0px 20px;">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="col-md-3 col-sm-12" style="padding-left: 0px 5px;">
+        <app-self-card></app-self-card>
+        <app-follow-author></app-follow-author>
+        <app-recommend></app-recommend>
+        <app-friendship-link></app-friendship-link>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+  <app-backtop *ngIf="showBackTop"></app-backtop>
+</div>

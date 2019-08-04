@@ -1,0 +1,58 @@
+<div>
+  <app-breadcrumb></app-breadcrumb>
+  <div class="layout_page_content_form">
+    <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+          <nz-form-label>所属分类</nz-form-label>
+          <nz-form-control>
+            <nz-input-group>
+                <nz-select nzShowSearch nzAllowClear formControlName="cat_id"  nzPlaceHolder="请选择文章类别">
+                  <nz-option nzValue="" nzLabel="全部"></nz-option>
+                  <nz-option *ngFor="let item of categoryList" [nzValue]="item.id" [nzLabel]="item.category_name"></nz-option>
+                </nz-select>
+            </nz-input-group>
+            <nz-form-explain *ngIf="validateForm.get('cat_id')?.dirty && validateForm.get('cat_id')?.errors">文章类别不能为空！</nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button nzType="primary">查询</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+  <div class="show_content">
+    <nz-table 
+        #archiveTable
+        *ngIf="archiveList"
+        [nzAlign]="right"
+        [nzData]="archiveList"
+        [nzLoading]="loading"
+        [nzFrontPagination]="false"
+        [nzShowQuickJumper]="true"
+        [nzShowSizeChanger]="true"
+        [nzShowTotal]="totalTemplate"
+        [nzPageSizeOptions]="paginationSizeOptions"
+        [(nzPageIndex)]="currentPage"
+        [(nzPageSize)]="pageSize"
+        [(nzTotal)]="total"
+        (nzPageIndexChange)="changePageIndex($event)"   
+        (nzPageSizeChange)="changePageSize($event)">
+        <thead>
+          <tr>
+            <th>标题</th>
+            <th>状态</th>
+            <th>录入时间</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of archiveTable.data">
+            <td>{{ data.title }}</td>
+            <td>{{ data.status==='1' ? '有效':'无效' }}</td>
+            <td>{{ data.release_time | date:"yyyy-MM-dd" }}</td>
+          </tr>
+        </tbody>
+        <ng-template #totalTemplate let-total> 总条数： {{ total }} 条</ng-template>
+      </nz-table>
+  </div>
+</div>

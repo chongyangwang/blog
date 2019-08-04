@@ -1,0 +1,44 @@
+<div>
+  <app-breadcrumb></app-breadcrumb>
+  <div class="layout_page_content_form"></div>
+  <div class="show_content">
+    <nz-table 
+        #sayTable
+        *ngIf="sayList"
+        [nzAlign]="right"
+        [nzData]="sayList"
+        [nzLoading]="loading"
+        [nzFrontPagination]="false"
+        [nzShowQuickJumper]="true"
+        [nzShowSizeChanger]="true"
+        [nzShowTotal]="totalTemplate"
+        [nzPageSizeOptions]="paginationSizeOptions"
+        [(nzPageIndex)]="currentPage"
+        [(nzPageSize)]="pageSize"
+        [(nzTotal)]="total"
+        (nzPageIndexChange)="changePageIndex($event)"   
+        (nzPageSizeChange)="changePageSize($event)">
+        <thead>
+          <tr>
+            <th>状态</th>
+            <th>内容</th>
+            <th>录入时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of sayTable.data">
+            <td>{{ data.status==='1' ? '有效': '无效' }}</td>
+            <td >{{ data.content }}</td>
+            <td>{{ data.release_time | date:"yyyy-MM-dd" }}</td>
+            <td>
+              <i nz-icon nzType="edit" nzTheme="outline"></i>
+               &nbsp;&nbsp;
+              <i nz-icon nzType="delete" nzTheme="outline" (click)="handelDelete(data.id)"></i>
+            </td>
+          </tr>
+        </tbody>
+        <ng-template #totalTemplate let-total> 总条数： {{ total }} 条</ng-template>
+      </nz-table>
+  </div>
+</div>

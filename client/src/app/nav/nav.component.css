@@ -1,0 +1,32 @@
+.bt_nav{
+  width:100%; 
+  border-top: 1px solid #666;
+  /* background: #03060B; */
+}
+.navbar a {
+  color: #fff;
+}
+.navbar{
+  padding: 0px;
+  background: red;
+}
+.navbar-light .navbar-nav .nav-link{
+   padding: 0.5rem 1.2rem;
+   height: 100%;
+   color:#fff;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.cuurent_link{
+  color:#298bf3!important;
+  background: #666;
+} 
+.bt_toggle_img{
+  width:25px;
+  height:25px;
+  display: inline-block;
+}
+.bt_toggle_button{
+  outline: none;
+}

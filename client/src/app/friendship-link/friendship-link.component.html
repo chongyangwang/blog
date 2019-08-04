@@ -1,0 +1,10 @@
+<div class="card text-center friendship-link-card bt_border_global">
+  <div class="card-header">
+    <h4>友情链接</h4>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item link-item" *ngFor="let item of friendShipList.data;let key=index;" (click)="handelFriendShipLink(item.comlink)">
+      {{item.desc}}
+    </li>
+  </ul>
+</div>

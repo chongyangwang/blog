@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+@charset "UTF-8";
+@import './ngzerro.css';
+body{
+  overflow: hidden;
+}
+.admin_box{
+  width:100%;
+  height: 100%;
+}
+.home_link{
+  color: rgba(255,255,255,.65) !important;
+  text-decoration: none !important;
+  background-color: transparent;
+  cursor: pointer;
+  transition: color .3s;
+}
+.breadcrumb{
+  width:100%;
+  height: 100%;
+}
+.breadcrumb_row{
+  line-height: 45px!important;
+  padding-left: 10px!important;
+  font-weight: 600;
+}
+.bt_border_global{
+  box-shadow:#e6d8d8 0px 0px 3px;
+}
+
+.layout_page_content_form{
+  width:100%;
+  padding: 20px 10px;
+}

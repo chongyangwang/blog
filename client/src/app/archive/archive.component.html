@@ -1,0 +1,42 @@
+<div class="container bt_page bt_page_wapper">
+    <div class="bt_page_wapper_form archive_form">
+        <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+            <nz-form-item>
+                <!-- <nz-form-label>文章类别</nz-form-label> -->
+                <nz-form-control>
+                    <nz-input-group>
+                        <nz-select nzShowSearch nzAllowClear formControlName="cat_id" nzPlaceHolder="请选择文章类别">
+                            <nz-option nzValue="" nzLabel="全部"></nz-option>
+                            <nz-option *ngFor="let item of categoryList" [nzValue]="item.id"
+                                [nzLabel]="item.category_name"></nz-option>
+                        </nz-select>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <button nz-button nzType="primary">搜搜</button>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </div>
+    <div class="bt_page_piece bt_page_say">
+        <nz-timeline nzMode="alternate">
+            <nz-timeline-item *ngFor="let archive of archiveList;">
+                <div class="item_archive">
+                    <div>
+                        <p style="cursor: pointer" (click)="handelArticleDetail(archive.id)">{{archive.title}}</p>
+                        <p>{{archive.release_time | date:'yyyy-MM-dd'}}</p>
+                    </div>
+                </div>
+            </nz-timeline-item>
+        </nz-timeline>
+    </div>
+    <div class="bt_page_wapper_footer col-sm-12 col-md-12">
+        <nz-pagination [nzFrontPagination]="false" [nzShowQuickJumper]="false" [nzShowSizeChanger]="true"
+            [nzPageSizeOptions]="paginationSizeOptions" [(nzPageIndex)]="currentPage" [(nzPageSize)]="pageSize"
+            [(nzTotal)]="total" (nzPageIndexChange)="changePageIndex($event)"
+            (nzPageSizeChange)="changePageSize($event)">
+        </nz-pagination>
+    </div>
+</div>

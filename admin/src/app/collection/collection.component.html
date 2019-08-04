@@ -1,0 +1,66 @@
+<div class="admin_wrap_layout_page_content">
+  <app-breadcrumb></app-breadcrumb>
+  <div class="layout_page_content_form">
+    <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <!-- <nz-form-item>
+          <nz-form-label>收藏文章标题</nz-form-label>
+          <nz-form-control>
+            <nz-input-group>
+              <input formControlName="title" nz-input placeholder="请输入收藏文章标题" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item> -->
+      <nz-form-item>
+        <nz-form-label>文章类别</nz-form-label>
+        <nz-form-control>
+          <nz-input-group>
+            <nz-select nzShowSearch nzAllowClear formControlName="cat_id" nzPlaceHolder="请选择文章类别">
+              <nz-option nzValue="" nzLabel="全部"></nz-option>
+              <nz-option *ngFor="let item of categoryList" [nzValue]="item.id" [nzLabel]="item.category_name">
+              </nz-option>
+            </nz-select>
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('cat_id')?.dirty && validateForm.get('cat_id')?.errors">文章类别不能为空！
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button nzType="primary">查询</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+  <div class="show_content" *ngIf="collectionList">
+    <nz-table #collectionTable [nzAlign]="right" [nzData]="collectionList" [nzLoading]="loading"
+      [nzFrontPagination]="false" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="totalTemplate"
+      [nzPageSizeOptions]="paginationSizeOptions" [(nzPageIndex)]="currentPage" [(nzPageSize)]="pageSize"
+      [(nzTotal)]="total" (nzPageIndexChange)="changePageIndex($event)" (nzPageSizeChange)="changePageSize($event)">
+      <thead>
+        <tr>
+          <th>名称</th>
+          <th>分类</th>
+          <th>地址</th>
+          <th>状态</th>
+          <th>录入时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of collectionTable.data">
+          <td>{{ data.title }}</td>
+          <td>{{ data.category_name }}</td>
+          <td>{{ data.url }}</td>
+          <td>{{ data.status===1 ? '有效':'无效' }}</td>
+          <td>{{ data.entry_time | date:"yyyy-MM-dd" }}</td>
+          <td>
+            <i nz-icon nzType="edit" nzTheme="outline"></i>
+            &nbsp;&nbsp;
+            <i nz-icon nzType="delete" nzTheme="outline" (click)="handelDelete(data.id)"></i>
+          </td>
+        </tr>
+      </tbody>
+      <ng-template #totalTemplate let-total> 总条数： {{ total }} 条</ng-template>
+    </nz-table>
+  </div>
+</div>

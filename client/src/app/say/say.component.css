@@ -1,0 +1,23 @@
+@keyframes trans {
+  0% {
+    transform: translate(-400px, 0px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+.item_say {
+  width: 100%;
+  background: #f0f0f0;
+  border-radius: 3px;
+  padding: 5px;
+  animation: trans 1.4s ease;
+}
+.say_img {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.say_img img {
+  width: 50%;
+  display: block;
+}
